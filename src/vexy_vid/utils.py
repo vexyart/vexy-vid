@@ -65,9 +65,10 @@ def parse_size(size_spec: str, orig_width: int, orig_height: int) -> tuple[int, 
         RATIO:                16:9           — crop to aspect ratio
         PIXELSxPIXELS:        1280x720       — exact pixel dimensions
         PERCENT%xPERCENT%:    50%x50%        — percentage of original
+        PERCENT%:             50%            — uniform percentage (same as 50%x50%)
         WIDTHx:               1280x / 50%x   — width only, height=100%
         xHEIGHT:              x720  / x50%   — height only, width=100%
-        MIXED:                1280x50% / 50%x720
+        MIXED:                1280x50% / 50%x720 — mix pixels and percentage
 
     Args:
         size_spec: Size specification string
@@ -106,9 +107,14 @@ def parse_size(size_spec: str, orig_width: int, orig_height: int) -> tuple[int, 
         target_h = _parse_dim_component(h_part, orig_height)
         return target_w, target_h
 
+    # Single percentage: "50%" → same as "50%x50%"
+    if spec.endswith("%") and "x" not in spec.lower():
+        pct = float(spec.rstrip("%"))
+        return int(orig_width * pct / 100), int(orig_height * pct / 100)
+
     raise ValueError(
         f"Unrecognized size format: {spec!r}. "
-        f"Expected RATIO (16:9), WxH (1280x720), or percent (50%x50%)"
+        f"Expected RATIO (16:9), WxH (1280x720), percent (50%x50% or 50%)"
     )
 
 
