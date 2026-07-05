@@ -1,6 +1,0 @@
-{"timestamp":"2026-04-07T22:31:32.201Z","event":"session_started","sessionId":"ses_295ed79f2ffeNwZIv9U8qD9gga","agentName":"Sisyphus (Ultraworker)"}
-{"timestamp":"2026-04-07T22:31:32.202Z","event":"delegation_begin","sessionId":"ses_295ed79f2ffeNwZIv9U8qD9gga","agentName":"Sisyphus (Ultraworker)","taskId":"unknown"}
-{"timestamp":"2026-04-07T22:31:32.292Z","event":"heartbeat","sessionId":"ses_295ed79f2ffeNwZIv9U8qD9gga"}
-{"timestamp":"2026-04-07T22:32:14.922Z","event":"heartbeat","sessionId":"ses_295ed79f2ffeNwZIv9U8qD9gga"}
-{"timestamp":"2026-04-07T22:32:47.002Z","event":"heartbeat","sessionId":"ses_295ed79f2ffeNwZIv9U8qD9gga"}
-{"timestamp":"2026-04-07T22:33:56.759Z","event":"heartbeat","sessionId":"ses_295ed79f2ffeNwZIv9U8qD9gga"}
