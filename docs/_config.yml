@@ -1,0 +1,15 @@
+title: vexy-vid
+description: High-performance video cropping and trimming CLI with automatic detection
+remote_theme: just-the-docs/just-the-docs
+url: https://vexyart.github.io
+baseurl: /vexy-vid
+
+aux_links:
+  GitHub: https://github.com/vexyart/vexy-vid
+  PyPI: https://pypi.org/project/vexy-vid/
+
+color_scheme: dark
+search_enabled: true
+
+plugins:
+  - jekyll-remote-theme

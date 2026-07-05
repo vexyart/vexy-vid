@@ -126,8 +126,11 @@ def detect_letterbox_ffmpeg(
         "null",
         "-",
     ]
-    if not verbose:
-        cmd.extend(["-loglevel", "error"])
+    # cropdetect writes its `crop=w:h:x:y` result at ffmpeg's `info` log level.
+    # We capture and parse stderr ourselves, so we must keep the level at least
+    # `info` — dropping to `error` (the old default) hid the result entirely and
+    # made non-verbose letterbox detection always report "nothing found".
+    cmd.extend(["-loglevel", "verbose" if verbose else "info"])
     try:
         result = subprocess.run(cmd, capture_output=True, text=True)
         crop_matches = re.findall(r"crop=(\d+):(\d+):(\d+):(\d+)", result.stderr)

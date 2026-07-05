@@ -2,7 +2,7 @@
 
 import os
 import subprocess
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 import ffmpeg
 from loguru import logger
@@ -226,20 +226,24 @@ def process_video_with_hardware_encoding(
 
     logger.info(f"Using encoder: {encoder_name} (quality: {quality_label})")
 
-    global_args = ["-loglevel", "error" if not verbose else "info"]
+    # Global ffmpeg flags applied before the output URL. ffmpeg-python attaches
+    # these to the stream via `.global_args(...)`, not as a `run()` keyword.
+    global_args = ["-loglevel", "info" if verbose else "error"]
 
     try:
         # Build FFmpeg command with hardware encoding
         input_stream = ffmpeg.input(input_path)
 
-        # Apply video filter
-        if video_filter:
-            input_stream = input_stream.video.filter_complex(video_filter)
-
         # Build output arguments
         output_args = {
             "acodec": "copy",  # Copy audio without re-encoding
         }
+
+        # Pass the crop/scale chain straight through as `-vf`. ffmpeg-python has
+        # no method that takes a raw multi-filter string, so we hand it to the
+        # output stage where ffmpeg parses the whole chain itself.
+        if video_filter:
+            output_args["vf"] = video_filter
 
         # Add encoder-specific arguments
         output_args["c:v"] = encoder_name
@@ -249,12 +253,12 @@ def process_video_with_hardware_encoding(
 
         # Create output stream
         output_stream = ffmpeg.output(input_stream, output_path, **output_args)
+        output_stream = output_stream.global_args(*global_args)
 
         # Run encoding
         with console.status(f"Processing video with {encoder_name}..."):
             ffmpeg.run(
                 output_stream,
-                global_args=global_args,
                 overwrite_output=True,
                 capture_stdout=True,
                 capture_stderr=True,
@@ -276,23 +280,22 @@ def process_video_with_hardware_encoding(
                 # Retry with software encoder
                 input_stream = ffmpeg.input(input_path)
 
-                if video_filter:
-                    input_stream = input_stream.video.filter_complex(video_filter)
-
                 output_args = {
                     "acodec": "copy",
                     "c:v": fallback_encoder,
                 }
+                if video_filter:
+                    output_args["vf"] = video_filter
                 output_args.update(fallback_config)
                 if "codec" in output_args:
                     del output_args["codec"]
 
                 output_stream = ffmpeg.output(input_stream, output_path, **output_args)
+                output_stream = output_stream.global_args(*global_args)
 
                 with console.status(f"Processing video with {fallback_encoder} (fallback)..."):
                     ffmpeg.run(
                         output_stream,
-                        global_args=global_args,
                         overwrite_output=True,
                         capture_stdout=True,
                         capture_stderr=True,

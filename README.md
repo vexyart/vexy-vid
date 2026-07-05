@@ -2,6 +2,8 @@
 
 High-performance video cropping and trimming CLI tool with automatic detection.
 
+![vexy-vid](docs/assets/icon.png)
+
 ## Features
 
 - **Crop** — crop video to specific dimensions with alignment control
@@ -101,6 +103,22 @@ Optimizations over the original implementation:
 - **Buffer pool memory management** — 25-50% reduced allocation overhead
 - **Numba SIMD pixel operations** — 10-50x analysis speedup
 - **Intelligent caching** — instant reprocessing of identical videos
+
+## Documentation
+
+Full docs — usage reference and how hardware encoding is selected — live in
+[`docs/`](docs/index.md).
+
+## Development
+
+```bash
+uv venv && uv pip install -e ".[dev]"
+pytest tests/                       # integration tests skip without ffmpeg
+ruff check src/ tests/ && ruff format src/ tests/
+```
+
+See [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md) for architecture and
+the load-bearing details behind the ffmpeg integration.
 
 ## License
 

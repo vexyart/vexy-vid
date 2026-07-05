@@ -1,17 +1,15 @@
 """Utility functions for video processing."""
 
-import sys
-import re
-import json
 import hashlib
+import json
+import sys
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import ffmpeg
-import numpy as np
 from loguru import logger
 
-from vexy_vid.constants import ANALYSIS_FRAME_WIDTH, CACHE_DIR
+from vexy_vid.constants import CACHE_DIR
 
 
 def parse_dimension(value: str | int | float | None, reference: int, is_trim: bool = False) -> int:

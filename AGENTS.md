@@ -64,10 +64,16 @@ src/vexy_vid/
 
 ### Testing
 
-- Syntax check: `python -m py_compile src/vexy_vid/<module>.py`
-- Install test: `uv pip install -e .`
-- CLI test: `vexy-vid crop --help` / `vexy-vid trim --help`
-- ffmpeg is a system dependency — tests that process video require it
+- Run the suite: `pytest tests/`
+- Unit tests (`test_utils`, `test_analysis`, `test_encoder`, `test_smoke`) need
+  no ffmpeg — they exercise parsing, the Numba/OpenCV detection primitives on
+  synthetic frames, and encoder config selection.
+- Integration tests (`test_integration`) generate a synthetic letterboxed clip
+  and run `crop`/`trim` end to end. The whole module is skipped when the
+  `ffmpeg` binary is not on `PATH`.
+- Coverage: `pytest tests/ --cov=vexy_vid`.
+- CI (`.github/workflows/ci.yml`) runs ruff + tests on Python 3.10–3.12 with
+  ffmpeg installed. `release.yml` publishes to PyPI on `v*` tags.
 
 ## Gotchas
 

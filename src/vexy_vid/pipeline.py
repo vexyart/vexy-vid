@@ -173,7 +173,12 @@ class VideoProcessingPipeline:
                     item = self.input_queue.get(timeout=1.0)
 
                     if item is None:
-                        # End of input signal
+                        # End-of-input signal. The reader emits a single sentinel,
+                        # so re-post it before leaving — otherwise sibling workers
+                        # would block forever waiting for a sentinel that never
+                        # comes, and the collector would hang on their missing
+                        # output-queue markers.
+                        self.input_queue.put(None)
                         break
 
                     frame_idx, frame = item

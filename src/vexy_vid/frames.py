@@ -1,7 +1,5 @@
 """Frame extraction using PyAV with FFmpeg fallback."""
 
-from typing import Optional, Tuple
-
 import av
 import ffmpeg
 import numpy as np

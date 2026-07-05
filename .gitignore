@@ -89,3 +89,14 @@ wheels/
 
 # hatch-vcs generated version file
 src/vexy_vid/_version.py
+
+# macOS
+.DS_Store
+
+# Agent tooling scratch state
+.swarm/
+.opencode/
+
+# Jekyll docs build
+docs/_site/
+docs/.jekyll-cache/

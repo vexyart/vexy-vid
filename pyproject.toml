@@ -54,6 +54,7 @@ email = 'support@fontlab.com'
 [project.optional-dependencies]
 dev = [
     'pytest>=8.0.0',
+    'pytest-cov>=5.0.0',
     'ruff>=0.6.0',
 ]
 
@@ -95,4 +96,26 @@ select = [
     'I',
     'N',
     'W',
+]
+
+[tool.ruff.lint.per-file-ignores]
+# CLI flags are intentionally capitalized so `fire` exposes --Halign / --Valign
+# / --Letterbox to users; renaming them would break the documented interface.
+'src/vexy_vid/crop.py' = ['N803']
+'src/vexy_vid/trim.py' = ['N803']
+# QUALITY_LABELS is a local lookup constant, not a mutable variable.
+'src/vexy_vid/encoder.py' = ['N806']
+
+[tool.pytest.ini_options]
+minversion = '8.0'
+testpaths = ['tests']
+addopts = '-ra -q'
+
+[tool.coverage.run]
+source = ['src/vexy_vid']
+omit = ['*/_version.py']
+
+[tool.hatch.envs.hatch-test]
+extra-dependencies = [
+    'pytest-cov>=5.0.0',
 ]
