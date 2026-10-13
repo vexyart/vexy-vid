@@ -2,6 +2,8 @@
 
 High-performance video cropping and trimming CLI tool with automatic detection.
 
+**Documentation:** https://vexy.dev/vexy-vid/
+
 ![vexy-vid](docs/assets/icon.png)
 
 ## Features
@@ -106,8 +108,9 @@ Optimizations over the original implementation:
 
 ## Documentation
 
-Full docs — usage reference and how hardware encoding is selected — live in
-[`docs/`](docs/index.md).
+Full documentation — CLI reference, automatic detection, hardware encoding,
+architecture and troubleshooting — is at https://vexy.dev/vexy-vid/ (sources in
+[`src_docs/md/`](src_docs/md/index.md)).
 
 ## Development
 

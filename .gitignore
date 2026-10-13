@@ -100,3 +100,8 @@ src/vexy_vid/_version.py
 # Jekyll docs build
 docs/_site/
 docs/.jekyll-cache/
+
+# Agent / tool state and build output
+.omc/
+site/
+node_modules/

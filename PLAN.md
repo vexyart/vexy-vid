@@ -32,4 +32,4 @@ modernization pass (CI, tests, bug fixes, docs) is complete — see `CHANGELOG.m
 
 - Publish to PyPI once the encode fixes ship (the pre-fix releases could not
   encode against current `ffmpeg-python`).
-- Build the Jekyll docs in CI to catch broken links.
+- Docs now build in CI with ProperDocs in strict mode (`.github/workflows/docs.yml`).

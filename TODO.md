@@ -13,7 +13,7 @@ Flat view of `PLAN.md`. Completed items are recorded in `CHANGELOG.md`.
 - [ ] Non-zero CLI exit code on failure
 - [ ] Evaluate `opencv-python-headless` to drop the macOS dylib clash
 - [ ] Publish to PyPI (post encode fixes)
-- [ ] Build Jekyll docs in CI
+- [x] Build docs in CI (ProperDocs, `.github/workflows/docs.yml`)
 
 ### Known, low-priority
 

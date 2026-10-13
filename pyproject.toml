@@ -62,6 +62,7 @@ dev = [
 vexy-vid = 'vexy_vid.cli:main'
 
 [project.urls]
+Documentation = 'https://vexy.dev/vexy-vid/'
 Homepage = 'https://github.com/vexyart/vexy-vid'
 Repository = 'https://github.com/vexyart/vexy-vid'
 Issues = 'https://github.com/vexyart/vexy-vid/issues'

@@ -45,6 +45,14 @@ git-tag-driven semantic versioning via `hatch-vcs`.
 
 ### Changed
 
+- Documentation moved from Jekyll (`docs/*.md`) to ProperDocs + MaterialX:
+  sources in `src_docs/md/`, config in `src_docs/mkdocs.yml`, built by
+  `src_docs/build.sh` into `docs/` and rebuilt on push by
+  `.github/workflows/docs.yml`. Published at https://vexy.dev/vexy-vid/.
+- `build.sh` builds docs and/or the package (`./build.sh [all|docs|package]`);
+  `publish.sh` tags with `gitnextver`, builds and uploads with `uv publish`.
+- `release.yml` publishes with `skip-existing: true`, so a version already
+  uploaded by `publish.sh` does not fail the workflow.
 - `.gitignore` now covers `.DS_Store`, agent scratch dirs (`.swarm/`,
   `.opencode/`), and the Jekyll build output.
 - `ruff` config records intentional CLI-flag capitalization (`--Halign`,
