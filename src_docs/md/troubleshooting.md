@@ -1,3 +1,8 @@
+---
+this_file: src_docs/md/troubleshooting.md
+tags: [Troubleshooting]
+---
+
 # Troubleshooting
 
 `vexy-vid` reports problems as Python exceptions. The last line of the traceback

@@ -1,3 +1,8 @@
+---
+this_file: src_docs/md/cli.md
+tags: [Command line]
+---
+
 # CLI reference
 
 `vexy-vid` has two commands, `crop` and `trim`. Both read one video, write one

@@ -1,3 +1,8 @@
+---
+this_file: src_docs/md/installation.md
+tags: [Installation]
+---
+
 # Installation
 
 `vexy-vid` has two parts: the Python package, installed from PyPI, and the

@@ -63,3 +63,9 @@ git-tag-driven semantic versioning via `hatch-vcs`.
 
 Initial package: `crop` and `trim` commands, PyAV frame extraction, Numba
 pixel analysis, hardware-encoder detection, `hatch-vcs` packaging.
+
+## 2026-10-18: documentation plugins
+
+- Use MaterialX search, inherited metadata and a topic index; keep ordered navigation in awesome-nav.
+- The documentation wrapper installs the plugins required by this site.
+- Strict documentation build and rendered output checks passed.
