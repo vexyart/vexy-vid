@@ -32,4 +32,4 @@ modernization pass (CI, tests, bug fixes, docs) is complete — see `CHANGELOG.m
 
 - Publish to PyPI once the encode fixes ship (the pre-fix releases could not
   encode against current `ffmpeg-python`).
-- Docs now build in CI with ProperDocs in strict mode (`.github/workflows/docs.yml`).
+- CI runs the strict ProperDocs build with fly-january (`src_docs/build.sh`).

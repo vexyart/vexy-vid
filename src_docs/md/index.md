@@ -1,4 +1,4 @@
-# vexy-vid
+# vexy-vid { data-toc-label="On this page" }
 
 `vexy-vid` is a command-line tool that crops, trims and rescales video files.
 It can find letterbox bars and the subtitle band on its own, and it encodes the

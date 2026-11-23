@@ -55,6 +55,9 @@ src/vexy_vid/
 - **uv** for dependency management
 - Entry point: `vexy-vid` → `vexy_vid.cli:main`
 - Version fallback: `0.0.1` when no git tag exists
+- `./build.sh docs` and the Pages workflow use `src_docs/build.sh` to build
+  `src_docs/mkdocs.yml` in strict mode. The wrapper installs fly-january 0.1.1
+  with `uvx` on Python 3.13. Keep `extra.fly.chrome: none` for this site.
 
 ### Naming
 

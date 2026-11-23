@@ -60,7 +60,7 @@ The per-pixel loops (`calculate_row_luminance`, `find_black_borders`,
 `count_bright_pixels_per_row`) are compiled with Numba's `@jit(nopython=True)`.
 Two of them use `parallel=True` to spread rows across CPU cores.
 
-## Using vexy-vid from Python
+## Using vexy-vid from Python { data-toc-label="Python API" }
 
 The command functions are plain Python functions. Their keyword arguments match
 the command-line flags:

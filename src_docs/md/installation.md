@@ -41,7 +41,7 @@ ffprobe -version
 `vexy-vid` calls both. It uses `ffprobe` (through `ffmpeg-python`) to read the
 video dimensions before every operation.
 
-## Install vexy-vid
+## Install vexy-vid { data-toc-label="Install the CLI" }
 
 1. Install the package:
 

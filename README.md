@@ -112,6 +112,9 @@ Full documentation — CLI reference, automatic detection, hardware encoding,
 architecture and troubleshooting — is at https://vexy.dev/vexy-vid/ (sources in
 [`src_docs/md/`](src_docs/md/index.md)).
 
+Run `./build.sh docs` to rebuild `docs/` in strict mode. The documentation
+build uses ProperDocs with fly-january 0.1.1 and unbranded navigation.
+
 ## Development
 
 ```bash

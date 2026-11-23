@@ -13,7 +13,7 @@ Flat view of `PLAN.md`. Completed items are recorded in `CHANGELOG.md`.
 - [ ] Non-zero CLI exit code on failure
 - [ ] Evaluate `opencv-python-headless` to drop the macOS dylib clash
 - [ ] Publish to PyPI (post encode fixes)
-- [x] Build docs in CI (ProperDocs, `.github/workflows/docs.yml`)
+- [x] Build docs in CI with ProperDocs and fly-january (`.github/workflows/docs.yml`)
 
 ### Known, low-priority
 
