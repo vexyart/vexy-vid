@@ -44,6 +44,7 @@ git-tag-driven semantic versioning through `hatch-vcs`.
 
 ### Changed
 
+- Documentation builds now require fly-january 0.3.0 or later.
 - Site now uses the fly-january 0.2.1 theme (chrome: none).
 - Documentation moved from Jekyll (`docs/*.md`) to ProperDocs + MaterialX:
   sources in `src_docs/md/`, config in `src_docs/mkdocs.yml`, built by
