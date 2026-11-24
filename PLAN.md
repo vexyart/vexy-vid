@@ -1,35 +1,20 @@
 # PLAN
 
-Future work for `vexy-vid`, in rough priority order. The 2026-07-05
-modernization pass (CI, tests, bug fixes, docs) is complete — see `CHANGELOG.md`.
-
 ## Correctness and coverage
 
-- Raise coverage on `analysis.py` subtitle detection (`detect_subtitles_*`) and
-  the encoder software-fallback branch with dedicated fixtures.
-- Add a fixture clip that carries an audio stream, so `-acodec copy` on the
-  encode path is exercised (current synthetic clips are video-only).
-- Property-test `parse_size` / `parse_dimension` against random specs.
+- Test the subtitle detectors with clips that have a subtitle band and clips that do not.
+- Force a hardware encode to fail and verify the software fallback produces a usable file.
+- Add an audio-bearing fixture and check that cropping and trimming copy its audio stream.
+- Property-test `parse_size` and `parse_dimension` against generated specifications.
 
-## Features
+## CLI
 
-- `--preview` flag: print the computed crop/trim geometry and exit without
-  encoding (dry run).
-- `--dry-run` JSON output for scripting.
-- Batch mode: accept a glob or a list of files on stdin and process each.
-- Expose `cropdetect` sensitivity (`limit`, `round`) as flags.
+- Add `--preview` to display the computed geometry and `--dry-run` to emit it as JSON. Both should skip encoding.
+- Accept a glob or a list of input paths on stdin for batch processing.
+- Expose the `cropdetect` settings `limit` and `round` as flags.
+- Give zero-length clips a clear input error. Check both commands with an empty file and a zero-duration video.
 
-## Robustness
+## Maintenance
 
-- Handle inputs with no video stream and zero-length clips with a clear error
-  rather than a probe exception.
-- Consider `opencv-python-headless` to shrink the dependency and drop the
-  macOS dylib clash entirely.
-- Propagate a non-zero exit code from the CLI on failure (fire currently
-  swallows some paths).
-
-## Packaging / docs
-
-- Publish to PyPI once the encode fixes ship (the pre-fix releases could not
-  encode against current `ffmpeg-python`).
-- CI runs the strict ProperDocs build with fly-january (`src_docs/build.sh`).
+- Compare the macOS startup warning and package size with `opencv-python-headless`. See [issue 001](issues/001.md).
+- Decide whether to track or archive the original `dev/` references, or keep them ignored. See [issue 002](issues/002.md).

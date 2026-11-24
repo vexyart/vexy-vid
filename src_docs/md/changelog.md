@@ -49,10 +49,12 @@ git-tag-driven semantic versioning through `hatch-vcs`.
   sources in `src_docs/md/`, config in `src_docs/mkdocs.yml`, built by
   `src_docs/build.sh` into `docs/` and rebuilt on push by
   `.github/workflows/docs.yml`. Published at https://vexy.dev/vexy-vid/.
-- `build.sh` builds docs and/or the package (`./build.sh [all|docs|package]`);
-  `publish.sh` tags with `gitnextver`, builds and uploads with `uv publish`.
-- `release.yml` publishes with `skip-existing: true`, so a version already
-  uploaded by `publish.sh` does not fail the workflow.
+- `./build.sh [all|docs|package]` builds the docs, the package or both. `./publish.sh` dispatches the tag-based GitHub release workflow (`1818374`).
+- PyPI project owners must configure the GitHub trusted publisher for `vexyart/vexy-vid`, workflow `release.yml`, environment `pypi`. The [1.0.7 wheel provenance](https://pypi.org/integrity/vexy-vid/1.0.7/vexy_vid-1.0.7-py3-none-any.whl/provenance) confirms this identity was used.
+- Published the encoding fixes on PyPI. The [1.0.7 wheel and source distribution](https://pypi.org/project/vexy-vid/1.0.7/#files) are available, and the wheel’s encoder, analysis and pipeline modules match tag `e853e2d`.
+- Verified strict docs builds in [GitHub Actions run 43991119984](https://github.com/vexyart/vexy-vid/actions/runs/43991119984) and locally with fly-january 0.2.1 (`ab70de2`).
+- Verified CLI failure status for `crop` and `trim`: both exited 1 on empty stdin, missing input, audio-only input, an empty file, invalid geometry and failed encoding.
+- Verified the no-video-stream diagnostic: both commands reported `No video stream found` for an audio-only WAV.
 - `.gitignore` now covers `.DS_Store`, agent scratch dirs (`.swarm/`,
   `.opencode/`), and the Jekyll build output.
 - `ruff` config records intentional CLI-flag capitalization (`--Halign`,

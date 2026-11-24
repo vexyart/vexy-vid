@@ -857,10 +857,12 @@ git-tag-driven semantic versioning through <code>hatch-vcs</code>.</p>
   sources in <code>src_docs/md/</code>, config in <code>src_docs/mkdocs.yml</code>, built by
   <code>src_docs/build.sh</code> into <code>docs/</code> and rebuilt on push by
   <code>.github/workflows/docs.yml</code>. Published at https://vexy.dev/vexy-vid/.</li>
-<li><code>build.sh</code> builds docs and/or the package (<code>./build.sh [all|docs|package]</code>);
-  <code>publish.sh</code> tags with <code>gitnextver</code>, builds and uploads with <code>uv publish</code>.</li>
-<li><code>release.yml</code> publishes with <code>skip-existing: true</code>, so a version already
-  uploaded by <code>publish.sh</code> does not fail the workflow.</li>
+<li><code>./build.sh [all|docs|package]</code> builds the docs, the package or both. <code>./publish.sh</code> dispatches the tag-based GitHub release workflow (<code>1818374</code>).</li>
+<li>PyPI project owners must configure the GitHub trusted publisher for <code>vexyart/vexy-vid</code>, workflow <code>release.yml</code>, environment <code>pypi</code>. The <a href="https://pypi.org/integrity/vexy-vid/1.0.7/vexy_vid-1.0.7-py3-none-any.whl/provenance">1.0.7 wheel provenance</a> confirms this identity was used.</li>
+<li>Published the encoding fixes on PyPI. The <a href="https://pypi.org/project/vexy-vid/1.0.7/#files">1.0.7 wheel and source distribution</a> are available, and the wheel’s encoder, analysis and pipeline modules match tag <code>e853e2d</code>.</li>
+<li>Verified strict docs builds in <a href="https://github.com/vexyart/vexy-vid/actions/runs/43991119984">GitHub Actions run 43991119984</a> and locally with fly-january 0.2.1 (<code>ab70de2</code>).</li>
+<li>Verified CLI failure status for <code>crop</code> and <code>trim</code>: both exited 1 on empty stdin, missing input, audio-only input, an empty file, invalid geometry and failed encoding.</li>
+<li>Verified the no-video-stream diagnostic: both commands reported <code>No video stream found</code> for an audio-only WAV.</li>
 <li><code>.gitignore</code> now covers <code>.DS_Store</code>, agent scratch dirs (<code>.swarm/</code>,
   <code>.opencode/</code>), and the Jekyll build output.</li>
 <li><code>ruff</code> config records intentional CLI-flag capitalization (<code>--Halign</code>,

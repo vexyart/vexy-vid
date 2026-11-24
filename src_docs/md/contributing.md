@@ -98,8 +98,11 @@ The version comes from the git tag through `hatch-vcs`; there is no version
 number in `pyproject.toml`. During a build, `hatch-vcs` writes
 `src/vexy_vid/_version.py`, which is not tracked by git.
 
-Maintainers release with `./publish.sh`. It runs `gitnextver` to commit, tag the
-next `vX.Y.Z` version and push, then builds the package and uploads it with
-`uv publish`. Pushing a `v*` tag also triggers `.github/workflows/release.yml`,
-which builds the package, publishes it to PyPI with trusted publishing (skipping
-files that already exist) and creates a GitHub release.
+Push the release commit to the default branch, then run `./publish.sh` to
+dispatch `.github/workflows/release.yml` for the next patch version. To choose
+the version, pass a tag such as `./publish.sh v1.4.0`. Pushing a `vX.Y.Z` tag
+also starts the workflow.
+
+The workflow builds the wheel and source distribution from the tag, attaches
+both to the GitHub release, then uploads them to PyPI using Trusted Publishing
+(OIDC) from the `pypi` environment.

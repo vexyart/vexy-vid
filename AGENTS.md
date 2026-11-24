@@ -76,7 +76,9 @@ src/vexy_vid/
   `ffmpeg` binary is not on `PATH`.
 - Coverage: `pytest tests/ --cov=vexy_vid`.
 - CI (`.github/workflows/ci.yml`) runs ruff + tests on Python 3.10–3.12 with
-  ffmpeg installed. `release.yml` publishes to PyPI on `v*` tags.
+  ffmpeg installed. `publish.sh` dispatches `release.yml`. The workflow also
+  accepts pushed `vX.Y.Z` tags and uploads through PyPI Trusted Publishing
+  from the `pypi` environment.
 
 ## Gotchas
 
