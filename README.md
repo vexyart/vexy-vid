@@ -113,7 +113,7 @@ architecture and troubleshooting — is at https://vexy.dev/vexy-vid/ (sources i
 [`src_docs/md/`](src_docs/md/index.md)).
 
 Run `./build.sh docs` to rebuild `docs/` in strict mode. The documentation
-build uses ProperDocs with fly-january 0.3.0 or later and unbranded navigation.
+build uses ProperDocs with fly-january 0.4.0 or later (remote theme assets) and unbranded navigation.
 
 ## Development
 

@@ -56,7 +56,7 @@ src/vexy_vid/
 - Entry point: `vexy-vid` → `vexy_vid.cli:main`
 - Version fallback: `0.0.1` when no git tag exists
 - `./build.sh docs` and the Pages workflow use `src_docs/build.sh` to build
-  `src_docs/mkdocs.yml` in strict mode. The wrapper installs fly-january 0.3.0 or later
+  `src_docs/mkdocs.yml` in strict mode. The wrapper installs fly-january 0.4.0 or later (remote theme assets)
   with `uvx` on Python 3.13. Keep `extra.fly.chrome: none` for this site.
 
 ### Naming
