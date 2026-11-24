@@ -6,7 +6,7 @@ this_file: WORK.md
 
 ## 2026-11-24: documentation theme
 
-- Rebuilt `docs/` with fly-january 0.1.1 and `chrome: none`. The header,
+- Rebuilt `docs/` with fly-january 0.2.1 and `chrome: none`. The header,
   repository link and table of contents use unbranded labels.
 - `./build.sh docs` passed in strict mode with zero warnings. The five local
   Fly assets match the installed theme. Search indexes all 11 documentation pages.
